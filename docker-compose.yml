@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  syncer:
+    image: jfahrer/src-syncer:0.1
+    build:
+      context: .
+    volumes:
+      - ../ruby-web:/src:cached
+      - code:/dest
+      - unison:/unison_data
+    command: ["unison", "-ui", "text", "-batch", "/src", "/dest"]
+    environment:
+      - USERID=1000
+      - USERNAME=wanelo
+      - UNISON_OPTS=-ignore "Path .git" -ignore "Path tags*" -ignore "Name *.swp" -ignore "Name *.swo"
+
+volumes:
+  code:
+  unison:
