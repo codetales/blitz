@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   syncer:
-    image: jfahrer/src-syncer:0.1
+    image: jfahrer/src-syncer:0.2.1
     build:
       context: .
     volumes:
