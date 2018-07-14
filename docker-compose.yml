@@ -1,19 +1,20 @@
-version: '3.3'
+version: '3.5'
 
 services:
   syncer:
-    image: jfahrer/src-syncer:0.2.1
+    image: ssync/ssync:0.2.1
     build:
       context: .
     volumes:
-      - ../ruby-web:/src:cached
+      - ./docker-entrypoint.sh:/docker-entrypoint.sh
+      - ./test:/src:cached
       - code:/dest
       - unison:/unison_data
-    command: ["unison", "-ui", "text", "-batch", "/src", "/dest"]
+    command: watch
     environment:
       - USERID=1000
-      - USERNAME=wanelo
-      - UNISON_OPTS=-ignore "Path .git" -ignore "Path tags*" -ignore "Name *.swp" -ignore "Name *.swo"
+      - USERNAME=julian
+      - UNISON_OPTS=-ignore "Path .git" -ignore "Path tags*" -ignore "Name {.*,*}.sw[pon]" -ignore "Path tmp" -prefer /src
 
 volumes:
   code:
