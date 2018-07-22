@@ -32,7 +32,7 @@ case "$COMMAND" in
     while true; do
       read -p "A reset will delete all data in ${UNISON_DATA} and ${DEST_PATH}. Do you want to proceed? " yn
       case $yn in
-        [Yy]* ) rm -rfv "${UNISON_DATA}/*" "${DEST_PATH}/*"; exit;;
+        [Yy]* ) rm -rf "${UNISON_DATA}/"* "${DEST_PATH}"/*; exit;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
       esac
