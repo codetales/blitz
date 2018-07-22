@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-COMMAND=${1-watch}
+COMMAND=${1-run}
 shift
 
 [ -d "${UNISON_DATA}" ] || mkdir "${UNISON_DATA}"
