@@ -7,8 +7,12 @@ shift
 
 if [ "$USERID" -ne 0 ]
 then
-  deluser ${USERNAME} --remove-home || true
+  id -u ${USERNAME} && deluser ${USERNAME} --remove-home || true
+
+  # Check if user is good, otherwise delete it
+  getent passwd ${USERID} && deluser $(getent passwd ${USERID} | cut -f1 -d ':') --remove-home
   adduser -h /home/${USERNAME} -s /bin/bash -u $USERID -D ${USERNAME}
+
   chown -R ${USERNAME}:${USERNAME} /home/${USERNAME} "${UNISON_DATA}" "${DEST_PATH}"
   [ -L /home/${USERNAME}/.unison ] || ln -s "${UNISON_DATA}" /home/${USERNAME}/.unison
   EXECUTOR="su-exec ${USERNAME}"
