@@ -73,3 +73,12 @@ docker-sync works great. The `native_osx` strategy is similar to the technique S
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Cool opts
+-force /src
+-prefer newer
+-silent
+-copyonconflict
+Complex configuration via preferences
+
+Add the help option
