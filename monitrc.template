@@ -1,7 +1,7 @@
-set daemon ${WATCHGUARD_CHECK_INTERVAL}
+set daemon ${MONIT_CHECK_INTERVAL}
 set init
 
 check process unison with pidfile /var/run/unison.pid
   start program = "/bin/bash -c 'supervisorctl start unison && supervisorctl pid unison > /var/run/unison.pid'"
   stop program = "/bin/bash -c 'supervisorctl stop unison && rm -rf /var/run/unison.pid'"
-  if cpu usage > ${WATCHGUARD_HIGH_CPU_THRESHOLD}% for ${WATCHGUARD_HIGH_CPU_CYCLES} cycles then restart
+  if cpu usage > ${MONIT_HIGH_CPU_THRESHOLD}% for ${MONIT_HIGH_CPU_CYCLES} cycles then restart
