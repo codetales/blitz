@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  ssync:
+    image: ssync/ssync:development
+    build:
+      context: .
+    volumes:
+      - ./test:/host
+      - code:/container:nocopy
+      - unison:/unison_data
+    command: watch
+    environment:
+      - SYNC_UID=${SYNC_UID:-0}
+      - SYNC_USER=julian
+      - UNISON_OPTS=-ignore "Name {.*,*}.sw[pon]" -ignore "Path tmp" -prefer /host
+
+  app:
+    image: alpine:3.9
+    volumes:
+      - code:/src:nocopy
+    command: ["tail", "-f", "/dev/null"]
+    working_dir: /src
+    stop_signal: SIGKILL
+
+volumes:
+  code:
+  unison:
