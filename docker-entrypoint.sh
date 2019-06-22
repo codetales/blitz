@@ -35,8 +35,7 @@ case "$COMMAND" in
     ;;
 
   watch)
-    envsubst /etc/monitrc.template > /etc/monitrc
-    # sed ... > monitrc
+    envsubst < /etc/monitrc.template > /etc/monitrc
     export UNISON_START_COMMAND="${UNSION_COMMAND} -repeat watch \"${HOST_DATA_PATH}\" \"${CONTAINER_DATA_PATH}\""
     exec supervisord
     ;;
