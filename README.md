@@ -126,7 +126,7 @@ To work around this issue, `ssync` uses Monit. Monit will watch the Unison proce
 Check out [docker-sync by EugenMayer](http://docker-sync.io/) or  [Crane](https://www.crane-orchestration.com) if you are looking for an alternative to `ssync`
 
 ## Development
-Fork this repo, do your work and create a PR.
+Fork https://github.com/ssync/ssync, do your work and create a PR.
 
 #### Upcoming features
 * Add an option to set the `prefer` option for unison to decide whether the host or container should win in case of conflicts
