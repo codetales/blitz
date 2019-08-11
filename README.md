@@ -24,13 +24,13 @@ services:
   blitz:
     image: codetales/blitz:0.3.1
     volumes:
-       # The bind mount to give blitz access to the local copy of your source code 
+       # The bind mount to give blitz access to the local copy of your source code
       - ./:/host:cached
-      # The volume that will hold 
-      - code:/container:nocopythe source code - other services should mount this volume for source code access.
+      # The volume that will hold
+      - code:/container:nocopy  # The source code - other services should mount this volume for source code access.
       # The unison synchronization state data
       - unison:/unison_data
-    command: ["watch"]          # Set the mode to `watch` 
+    command: ["watch"]          # Set the mode to `watch`
     environment:
       # Set additional unison flags
       - UNISON_OPTS=-ignore "Path tmp"
