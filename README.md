@@ -22,7 +22,7 @@ version: '3.7'
 
 services:
   blitz:
-    image: codetales/blitz:0.3.1
+    image: codetales/blitz:0.3.2
     volumes:
        # The bind mount to give blitz access to the local copy of your source code
       - ./:/host:cached
