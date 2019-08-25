@@ -87,7 +87,7 @@ Just place create a separate Docker Compose config for the Blitz service., volum
         - code:/usr/src/app:nocopy # We override the bind mount here and use the volume instead
 
     blitz:
-      image: codetales/blitz:0.3.1
+      image: codetales/blitz:0.3.2
       volumes:
         - ./:/host:cached
         - code:/container:nocopy
