@@ -140,7 +140,7 @@ Testing is currently done via a shell script. Run it via
 
 The script ensures that files are correctly synchronized between the Docker Host and the Docker Volume.
 
-I decided to go with.a shell script here because
+I decided to go with a shell script here because
 * Blitz has to be tested from the Docker Host and I didn’t want to introduce a lot of dependencies
 * Speed and timing the file synchronization between the Host and Volume is depending on the Docker Host. This means that the test suite might be brittle and hence not worth spending too much effort into it
 * I wanted something that is easy to debug and understand. The script just executes shell commands and dumps all commands and their output onto the terminal.
